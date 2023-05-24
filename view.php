@@ -56,7 +56,7 @@ $user_posts = $user_posts_statement->fetchAll();
                 <div class="container">
                   <p class="fw-bold mt-2"><?php echo $post['description']; ?></p>
                 </div>
-                <a class="btn btn-sm btn-primary fw-bold rounded-4" href="images/<?php echo $post['filename']; ?>" download><i class="bi bi-download"></i> download image</a>
+                <a class="btn btn-sm btn-primary mb-5 fw-bold rounded-4" href="images/<?php echo $post['filename']; ?>" download><i class="bi bi-download"></i> download image</a>
               </div>
             </div>
           </div>
