@@ -1,16 +1,25 @@
 <?php
-  session_start();
-  if (!isset($_SESSION['username'])) {
-    header("Location: session.php");
-    exit;
-  }
+session_start();
+if (!isset($_SESSION['username'])) {
+  header("Location: session.php");
+  exit;
+}
 
-  // Connect to the SQLite database
-  $db = new SQLite3('database.sqlite');
-  $db->exec("CREATE TABLE IF NOT EXISTS images (id INTEGER PRIMARY KEY AUTOINCREMENT, filename TEXT, username TEXT)");
+// Create "images" and "thumbnails" folders if they don't exist
+if (!is_dir('images')) {
+  mkdir('images');
+}
 
-  // Get all of the images from the database
-  $result = $db->query("SELECT * FROM images ORDER BY id DESC");
+if (!is_dir('thumbnails')) {
+  mkdir('thumbnails');
+}
+
+// Connect to the SQLite database
+$db = new SQLite3('database.sqlite');
+$db->exec("CREATE TABLE IF NOT EXISTS images (id INTEGER PRIMARY KEY AUTOINCREMENT, filename TEXT, username TEXT)");
+
+// Get all of the images from the database
+$result = $db->query("SELECT * FROM images ORDER BY id DESC");
 ?>
 
 <!DOCTYPE html>
