@@ -113,9 +113,9 @@ if (isset($_FILES['image'])) {
             <img class="d-block border border-2 object-fit-cover rounded mb-2" id="file-ip-1-preview" style="height: 480px; width: 100%;">
           </div>
           <div class="col-md-5 order-md-1">
-            <input class="form-control mb-2" type="file" name="image" type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
-            <input class="form-control mb-2" type="text" placeholder="title" id="title" name="title">
-            <textarea class="form-control mb-2" type="text" placeholder="description" id="description" style="height: 200px;" name="description"></textarea>
+            <input class="form-control mb-2" type="file" name="image" type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" required>
+            <input class="form-control mb-2" type="text" placeholder="title" id="title" name="title" required>
+            <textarea class="form-control mb-2" type="text" placeholder="description" id="description" style="height: 200px;" name="description" required></textarea>
             <button class="btn btn-primary fw-bold w-100" type="submit">upload</button>
           </div>
         </div>
