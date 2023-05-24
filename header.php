@@ -15,26 +15,22 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-bold">
               <li class="nav-item">
                 <a class="nav-link nav-center <?php if(basename($_SERVER['PHP_SELF']) == 'index.php') echo 'active' ?>" href="index.php">
-                  <i class="bi bi-house-fill fs-5"></i>
-                  <span class="d-md-none d-lg-inline d-lg-none ms-2">Home</span>
+                  Home
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link nav-center <?php if(basename($_SERVER['PHP_SELF']) == 'imgupload.php') echo 'active' ?>" href="imgupload.php">
-                  <i class="bi bi-cloud-arrow-up-fill fs-5"></i>
-                  <span class="d-md-none d-lg-inline d-lg-none ms-2">Uploads</span>
+                  Uploads
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link nav-center <?php if(basename($_SERVER['PHP_SELF']) == 'profile.php') echo 'active' ?>" href="profile.php">
-                  <i class="bi bi-person-circle fs-5"></i>
-                  <span class="d-md-none d-lg-inline d-lg-none ms-2">Profile</span>
+                  Profile
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link nav-center" href="logout.php">
-                  <i class="bi bi-door-open-fill fs-5"></i>
-                  <span class="d-md-none d-lg-inline d-lg-none ms-2">Logout</span>
+                  Logout
                 </a>
               </li>
             </ul>

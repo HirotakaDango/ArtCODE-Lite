@@ -16,7 +16,7 @@ if (!is_dir('thumbnails')) {
 
 // Connect to the SQLite database
 $db = new SQLite3('database.sqlite');
-$db->exec("CREATE TABLE IF NOT EXISTS images (id INTEGER PRIMARY KEY AUTOINCREMENT, filename TEXT, username TEXT)");
+$db->exec("CREATE TABLE IF NOT EXISTS images (id INTEGER PRIMARY KEY AUTOINCREMENT, filename TEXT, username TEXT, title TEXT, description TEXT)");
 
 // Get all of the images from the database
 $result = $db->query("SELECT * FROM images ORDER BY id DESC");
@@ -68,7 +68,7 @@ $result = $db->query("SELECT * FROM images ORDER BY id DESC");
     <?php include 'header.php'; ?>
     <div class="images">
       <?php while ($image = $result->fetchArray()): ?>
-        <a href="images/<?php echo $image['filename']; ?>">
+        <a href="view.php?id=<?php echo $image['id']; ?>">
           <img class="lazy-load" data-src="thumbnails/<?php echo $image['filename']; ?>">
         </a>
       <?php endwhile; ?>
