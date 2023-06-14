@@ -1,107 +1,25 @@
-    <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar fixed-top navbar-expand-md navbar-expand-lg bg-light bg-body-tertiary">
       <div class="container-fluid">
-        <button class="navbar-toggler1 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-          <svg fill="#d4d3cf" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 72 72" width="22px" height="22px"><path d="M56 48c2.209 0 4 1.791 4 4 0 2.209-1.791 4-4 4-1.202 0-38.798 0-40 0-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4C17.202 48 54.798 48 56 48zM56 32c2.209 0 4 1.791 4 4 0 2.209-1.791 4-4 4-1.202 0-38.798 0-40 0-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4C17.202 32 54.798 32 56 32zM56 16c2.209 0 4 1.791 4 4 0 2.209-1.791 4-4 4-1.202 0-38.798 0-40 0-2.209 0-4-1.791-4-4 0-2.209 1.791-4 4-4C17.202 16 54.798 16 56 16z"/></svg>
-        </button> 
-        <a class="navbar-brand text-secondary fw-bold" href="index.php">
-          ArtCODE LITE
-        </a>
-        <div class="offcanvas offcanvas-start w-50" tabindex="-1" id="navbar" aria-labelledby="navbarLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title text-secondary" id="navbarLabel">Menu</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-bold">
-              <li class="nav-item">
-                <a class="nav-link nav-center <?php if(basename($_SERVER['PHP_SELF']) == 'index.php') echo 'active' ?>" href="index.php">
-                  Home
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-center <?php if(basename($_SERVER['PHP_SELF']) == 'imgupload.php') echo 'active' ?>" href="imgupload.php">
-                  Uploads
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-center <?php if(basename($_SERVER['PHP_SELF']) == 'profile.php') echo 'active' ?>" href="profile.php">
-                  Profile
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-center" href="logout.php">
-                  Logout
-                </a>
-              </li>
-            </ul>
-          </div>
+        <a class="navbar-brand fw-bold" href="index.php">ArtCODE Lite</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link fw-bold <?php if(basename($_SERVER['PHP_SELF']) == 'index.php') echo 'active' ?>" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold <?php if(basename($_SERVER['PHP_SELF']) == 'upload.php') echo 'active' ?>" href="imgupload.php">Upload</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold <?php if(basename($_SERVER['PHP_SELF']) == 'profile.php') echo 'active' ?>" href="profile.php">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="logout.php">Logout</a>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
-    <br><br>
-    <style>
-      @media (min-width: 768px) {
-        .navbar-nav {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-      
-        .nav-center {
-          margin-left: 15px;
-          margin-right: 15px;
-        }
-      }
-      
-      @media (max-width: 767px) {
-        .navbar-brand {
-          position: static;
-          display: block;
-          text-align: center;
-          margin: auto;
-          transform: none;
-        }
-
-        .navbar-brand {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 18px;
-        }
-      }
-    
-      .navbar {
-        height: 45px;
-      }
-      
-      .navbar-brand {
-        font-size: 18px;
-      }
-
-      @media (min-width: 992px) {
-        .navbar-toggler1 {
-          display: none;
-        }
-      }
-    
-      .navbar-toggler1 {
-        background-color: #ededed;
-        border: none;
-        font-size: 8px;
-        margin-top: -2px;
-        margin-left: 8px;
-        border-radius: 5px;
-        padding: 6px;
-        transition: background-color 0.3s ease; 
-      }
-
-      .navbar-toggler1:hover {
-        background-color: rgba(0,0,0,0.2);
-      } 
-    </style>
+    <br><br><br>

@@ -106,11 +106,11 @@ if (isset($_FILES['image'])) {
       <h2 class="text-center fw-bold mt-2">UPLOAD IMAGE</h2>
       <form method="post" enctype="multipart/form-data">
         <?php if (isset($_GET['error'])): ?>
-              <p><?php echo $_GET['error']; ?></p>
+          <p><?php echo $_GET['error']; ?></p>
         <?php endif ?>
         <div class="row featurette">
           <div class="col-md-7 order-md-2">
-            <img class="d-block border border-2 object-fit-cover rounded mb-2" id="file-ip-1-preview" style="height: 480px; width: 100%;">
+            <img class="d-block border border-2 object-fit-cover rounded mb-2" id="file-ip-1-preview" style="height: 340px; width: 100%;">
           </div>
           <div class="col-md-5 order-md-1">
             <input class="form-control mb-2" type="file" name="image" type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);" required>
@@ -121,6 +121,7 @@ if (isset($_FILES['image'])) {
         </div>
       </form>
     </div>
+    <br>
     <script>
       function showPreview(event){
         if(event.target.files.length > 0){

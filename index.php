@@ -32,43 +32,39 @@ $result = $db->query("SELECT * FROM images ORDER BY id DESC");
     <style>
       .images {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        grid-gap: 2px;
+        grid-template-columns: repeat(2, 1fr); /* Two columns in mobile view */
+        grid-gap: 3px;
         justify-content: center;
         margin-right: 3px;
         margin-left: 3px;
       }
- 
+
+      @media (min-width: 768px) {
+        /* For desktop view, change the grid layout */
+        .images {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+      }
+
       .images a {
         display: block;
-        border-radius: 4px;
         overflow: hidden;
-        border: 2px solid #ccc;
-    }
- 
-    .images img {
+      }
+
+      .images img {
         width: 100%;
-        height: 150px;
+        height: auto;
         object-fit: cover;
-            }
-
-    .btn1 {
-        padding: 10px;
-        margin: 10px; 
-        border: 8px solid #eee;
-        border-radius: 15px;
-        color: gray;
-        font-weight: 700;
-        padding: 8px 20px;
-    }
-
-  </style>
+        height: 200px;
+        transition: transform 0.5s ease-in-out;
+      }
+    </style>
   </head>
   <body>
     <?php include 'header.php'; ?>
     <div class="images">
       <?php while ($image = $result->fetchArray()): ?>
-        <a href="view.php?id=<?php echo $image['id']; ?>">
+        <a class="shadow" href="view.php?id=<?php echo $image['id']; ?>">
           <img class="lazy-load" data-src="thumbnails/<?php echo $image['filename']; ?>">
         </a>
       <?php endwhile; ?>

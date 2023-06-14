@@ -34,29 +34,44 @@ $user_posts = $user_posts_statement->fetchAll();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
   <body>
-    <?php include ('header.php'); ?>
-    <div class="container mt-2">
+    <div class="container-fluid mt-3">
       <div style="margin-top: 6px;">
         <?php if ($post) { ?> <!-- Fixed variable name -->
-          <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item fw-bold"><a href="index.php">Home</a></li>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-chevron p-3 bg-body-tertiary rounded-3">
+              <li class="breadcrumb-item">
+                <a class="link-body-emphasis fw-bold text-decoration-none" href="index.php">
+                  <i class="bi bi-house-fill"></i>
+                  <span>Home</span>
+                </a>
+              </li>
+              <li class="breadcrumb-item active fw-bold"><?php echo $post['username']; ?></li>
               <li class="breadcrumb-item active fw-bold" aria-current="page"><?php echo $post['title']; ?></li>
             </ol>
           </nav>
-          <div class="image-row">
-            <div class="image-col-6">
-              <div class="image-card">
-                <img class="rounded object-fit-cover" style="width: 100%; height: 100%;" src="thumbnails/<?php echo $post['filename']; ?>" alt="<?php echo $post['title']; ?>">
-              </div>
+          <div class="row featurette">
+            <div class="col-md-5 order-md-1 mb-2">
+              <a class="d-block" href="images/<?php echo $post['filename']; ?>"><img class="rounded object-fit-cover img-thumbnail" style="width: 100%; height: 100%;" src="thumbnails/<?php echo $post['filename']; ?>" alt="<?php echo $post['title']; ?>"></a>
             </div>
-            <div class="cool-6">
-              <div class="image-card container">
-                <h2 class="fw-bold"><?php echo $post['title']; ?></h2>
-                <div class="container">
-                  <p class="fw-bold mt-2"><?php echo $post['description']; ?></p>
+            <div class="col-md-7 order-md-2"> 
+              <div class="card container w-100">
+                <h2 class="fw-bold text-center mt-2"><?php echo $post['title']; ?></h2>
+                <p class="fw-bold mt-2"><small><?php echo $post['description']; ?></small></p>
+                <?php
+                  // Get image size in megabytes
+                  $post_size = round(filesize('images/' . $post['filename']) / (1024 * 1024), 2);
+                  
+                  // Get image dimensions
+                  list($width, $height) = getimagesize('images/' . $post['filename']);
+                  
+                  // Display image information
+                  echo "<p class='text-start fw-semibold'>Image data size: " . $post_size . " MB</p>";
+                  echo "<p class='text-start fw-semibold'>Image dimensions: " . $width . "x" . $height . "</p>";
+                ?>
+                <div class="btn-group w-100 mt-2 mb-3">
+                  <a class="btn btn-primary fw-bold rounded-start-pill" href="images/<?php echo $post['filename']; ?>" download><i class="bi bi-download"></i> download</a>
+                  <button class="btn btn-primary fw-bold rounded-end-pill" onclick="sharePage()"><i class="bi bi-share-fill"></i> share</button>
                 </div>
-                <a class="btn btn-sm btn-primary mb-5 fw-bold rounded-4" href="images/<?php echo $post['filename']; ?>" download><i class="bi bi-download"></i> download image</a>
               </div>
             </div>
           </div>
@@ -65,6 +80,23 @@ $user_posts = $user_posts_statement->fetchAll();
         <?php } ?>
       </div>
     </div>
+    <br>
+    <script>
+      function sharePage() {
+        if (navigator.share) {
+          navigator.share({
+            title: document.title,
+            url: window.location.href
+          }).then(() => {
+            console.log('Page shared successfully.');
+          }).catch((error) => {
+            console.error('Error sharing page:', error);
+          });
+        } else {
+          console.log('Web Share API not supported.');
+        }
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
   </body>
