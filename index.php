@@ -64,7 +64,7 @@ $result = $db->query("SELECT * FROM images ORDER BY id DESC");
     <?php include 'header.php'; ?>
     <div class="images">
       <?php while ($image = $result->fetchArray()): ?>
-        <a class="shadow" href="view.php?id=<?php echo $image['id']; ?>">
+        <a class="shadow rounded" href="view.php?id=<?php echo $image['id']; ?>">
           <img class="lazy-load" data-src="thumbnails/<?php echo $image['filename']; ?>">
         </a>
       <?php endwhile; ?>

@@ -75,7 +75,7 @@ if (isset($_POST['filename'])) {
     <div class="images">
       <?php while ($image = $result->fetchArray()): ?>
         <div class="position-relative">
-          <a class="shadow" href="view.php?id=<?php echo $image['id'];?>">
+          <a class="shadow rounded" href="view.php?id=<?php echo $image['id'];?>">
             <img class="lazy-load" data-src="thumbnails/<?php echo $image['filename']; ?>">
           </a>
           <div>
