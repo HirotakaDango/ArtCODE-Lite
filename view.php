@@ -65,8 +65,8 @@ $user_posts = $user_posts_statement->fetchAll();
                   list($width, $height) = getimagesize('images/' . $post['filename']);
                   
                   // Display image information
-                  echo "<p class='text-start fw-semibold'>Image data size: " . $post_size . " MB</p>";
-                  echo "<p class='text-start fw-semibold'>Image dimensions: " . $width . "x" . $height . "</p>";
+                  echo "<p class='text-start fw-semibold'><small>Image data size: " . $post_size . " MB</small></p>";
+                  echo "<p class='text-start fw-semibold'><small>Image dimensions: " . $width . "x" . $height . "</small></p>";
                 ?>
                 <div class="btn-group w-100 mt-2 mb-3">
                   <a class="btn btn-primary fw-bold rounded-start-pill" href="images/<?php echo $post['filename']; ?>" download><i class="bi bi-download"></i> download</a>
